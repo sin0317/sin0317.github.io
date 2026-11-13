@@ -19,18 +19,23 @@
 
 双击 `index.html` 即可。
 
+## 线上地址
+
+**https://sin0317.github.io/**
+
+仓库：`sin0317/sin0317.github.io`（main 分支根目录，Pages 自动发布）
+
 ## 发布到 GitHub Pages
+
+本项目已部署。改完内容推一次即可：
 
 ```bash
 cd D:/WorkBuddy/personal-home
-git init && git add . && git commit -m "init: 说明书式个人主页"
-git branch -M main
-git remote add origin https://github.com/<用户名>/<仓库名>.git
-git push -u origin main
-# 仓库 Settings → Pages → Source 选 main / root
+git add -A && git commit -m "update"
+git push
 ```
 
-访问地址：`https://<用户名>.github.io/<仓库名>/`
+Pages 会在 1 分钟内自动重建。
 
 ## 待补
 
