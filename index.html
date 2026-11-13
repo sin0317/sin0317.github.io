@@ -132,11 +132,14 @@
   .contact a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--alert);padding-bottom:1px;transition:opacity .18s ease}
   .contact a:hover{opacity:.62}
   .contact .hint{color:var(--ink-faint);font-size:.82rem;margin-left:.6rem}
-  .qr{display:flex;gap:1.4rem;align-items:flex-start;margin-top:1.4rem;flex-wrap:wrap}
-  .qr figure{margin:0;text-align:center}
-  .qr img{width:132px;height:132px;display:block;border:1px solid var(--rule);padding:6px;background:#fff}
-  .qr figcaption{font-size:.72rem;color:var(--ink-faint);margin-top:.5rem;letter-spacing:.1em}
-  .qr .qnote{font-size:.85rem;color:var(--ink-soft);max-width:20rem;line-height:1.7}
+  .wechat{
+    font-family:var(--mono);font-size:.95rem;letter-spacing:.02em;
+    border-bottom:1px dashed var(--alert);padding-bottom:1px;cursor:pointer;
+    user-select:all;transition:opacity .18s ease;
+  }
+  .wechat:hover{opacity:.62}
+  .wechat.copied{border-bottom-style:solid;color:var(--alert)}
+  .contact-note{font-size:.85rem;color:var(--ink-soft);margin-top:1.4rem;line-height:1.75}
 
   /* 落款 */
   .signature{margin-top:clamp(3rem,8vw,5rem);padding-top:1.6rem;border-top:2px solid var(--ink)}
@@ -327,6 +330,13 @@
         </dd>
       </div>
       <div class="row">
+        <dt>微信</dt>
+        <dd>
+          <span class="wechat" id="wechat" title="点击复制">mercylago01</span>
+          <span class="hint">加好友请说明来意</span>
+        </dd>
+      </div>
+      <div class="row">
         <dt>GitHub</dt>
         <dd>
           <a href="https://github.com/sin0317" target="_blank" rel="noopener">github.com/sin0317</a>
@@ -342,13 +352,7 @@
       </div>
     </dl>
 
-    <div class="qr" id="qrblock">
-      <figure>
-        <img src="assets/wechat-qr.png" alt="微信二维码" id="qrimg">
-        <figcaption>微信</figcaption>
-      </figure>
-      <p class="qnote">扫码加我时，<strong>请说明来意</strong>。<br>没有备注的陌生好友申请，我通常不会通过——不是傲慢，是之前被广告号加怕了。</p>
-    </div>
+    <p class="contact-note">没有备注的陌生好友申请我通常不会通过——不是傲慢，是之前被广告号加怕了。</p>
   </section>
 
   <div class="signature reveal">
@@ -400,15 +404,20 @@
     a.href = 'mailto:' + u + '@' + h;
   });
 
-  // 微信二维码：图片缺失时整块隐藏，不让线上出现裂图
-  var qr = document.getElementById('qrimg');
-  if (qr){
-    var hideQr = function(){
-      var b = document.getElementById('qrblock');
-      if (b) b.style.display = 'none';
-    };
-    if (qr.complete && qr.naturalWidth === 0) hideQr();
-    qr.addEventListener('error', hideQr);
+  // 微信号：点一下复制，给个短反馈
+  var wx = document.getElementById('wechat');
+  if (wx){
+    wx.addEventListener('click', function(){
+      var txt = wx.textContent.trim();
+      var done = function(){ wx.classList.add('copied'); setTimeout(function(){ wx.classList.remove('copied'); }, 1200); };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done).catch(function(){});
+      } else {
+        var r = document.createRange(); r.selectNodeContents(wx);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand('copy'); done(); } catch(e){}
+      }
+    });
   }
 })();
 </script>
