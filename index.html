@@ -399,7 +399,7 @@
   }, {rootMargin:'-30% 0px -55% 0px'});
   secs.forEach(function(s){ if(s) spy.observe(s); });
 
-  // 邮箱反爬：静态文本写成 mercylago [at] gmail.com，脚本可用时才拼回真地址
+  // 邮箱反爬：静态文本用 [at] 代替 @，脚本可用时才拼回真地址
   [].forEach.call(document.querySelectorAll('.mail'), function(a){
     var u = a.getAttribute('data-u'), h = a.getAttribute('data-h');
     if (!u || !h) return;
