@@ -107,6 +107,8 @@
   .list{list-style:none;margin:1rem 0 0;padding:0}
   .list li{position:relative;padding-left:1.5rem;margin-bottom:.72rem}
   .list li::before{content:"—";position:absolute;left:0;color:var(--alert);opacity:.75}
+  .list a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--alert);transition:opacity .18s ease}
+  .list a:hover{opacity:.62}
 
   /* 不良反应：唯一用红框的区块 */
   .warn{border:1px solid var(--alert);padding:clamp(1.1rem,3.5vw,1.7rem);margin-top:1.2rem;position:relative;background:rgba(166,54,42,.028)}
@@ -123,6 +125,18 @@
   .item .what{margin:.15rem 0 0;font-size:.9rem;color:var(--ink-soft);grid-column:1/-1}
   .item .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--ink-faint);white-space:nowrap;border:1px solid var(--rule);padding:.1rem .45rem;border-radius:1px}
   .item .tag.live{color:var(--alert);border-color:rgba(166,54,42,.45)}
+
+  /* 联系方式 */
+  .contact{margin-top:1.6rem;border-top:1px solid var(--rule)}
+  .contact .row{grid-template-columns:7rem 1fr}
+  .contact a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--alert);padding-bottom:1px;transition:opacity .18s ease}
+  .contact a:hover{opacity:.62}
+  .contact .hint{color:var(--ink-faint);font-size:.82rem;margin-left:.6rem}
+  .qr{display:flex;gap:1.4rem;align-items:flex-start;margin-top:1.4rem;flex-wrap:wrap}
+  .qr figure{margin:0;text-align:center}
+  .qr img{width:132px;height:132px;display:block;border:1px solid var(--rule);padding:6px;background:#fff}
+  .qr figcaption{font-size:.72rem;color:var(--ink-faint);margin-top:.5rem;letter-spacing:.1em}
+  .qr .qnote{font-size:.85rem;color:var(--ink-soft);max-width:20rem;line-height:1.7}
 
   /* 落款 */
   .signature{margin-top:clamp(3rem,8vw,5rem);padding-top:1.6rem;border-top:2px solid var(--ink)}
@@ -177,6 +191,7 @@
       <li><a href="#contra"><span class="label">禁忌</span><span class="dots"></span><span class="no">05</span></a></li>
       <li><a href="#evidence"><span class="label">批准文号与证据</span><span class="dots"></span><span class="no">06</span></a></li>
       <li><a href="#storage"><span class="label">贮藏</span><span class="dots"></span><span class="no">07</span></a></li>
+      <li><a href="#contact"><span class="label">联系方式</span><span class="dots"></span><span class="no">08</span></a></li>
     </ol>
   </nav>
 
@@ -278,6 +293,16 @@
       <h3>2025 外研社·国才杯</h3><span class="tag">国赛英语组短视频 · 铜奖</span>
       <p class="what">这是目前唯一有结果的赛事。其他参加过的比赛，一律只写「参赛作品」。</p>
     </div>
+
+    <p style="margin-top:1.8rem;font-size:.9rem;color:var(--ink-soft)">
+      另外几个小东西，都能点开（GitHub Pages 托管，纯静态）：
+    </p>
+    <ul class="list" style="margin-top:.8rem;font-size:.92rem">
+      <li><a href="https://sin0317.github.io/zhengyin/" target="_blank" rel="noopener">参考文献核验</a> — 论文引用的对照工具</li>
+      <li><a href="https://sin0317.github.io/ncm2mp3/" target="_blank" rel="noopener">网易云 ncm 解密</a> — 浏览器内直接转码，文件不上传</li>
+      <li><a href="https://sin0317.github.io/cyber-fish/" target="_blank" rel="noopener">赛博功德箱</a> — 单文件互动网页，零依赖</li>
+      <li><a href="https://sin0317.github.io/autumn-recruit-workbench/" target="_blank" rel="noopener">秋招信息工作台</a> — 71 天 / 50 份日报，数据已停止自动更新</li>
+    </ul>
   </section>
 
   <section id="storage" class="reveal">
@@ -288,6 +313,42 @@
       <li><strong>把判断变成资产。</strong>一个人做的公司，最大的风险是「我病一周，业务停摆」。写文档、建流程、把隐性判断显性化——这是我目前认为最值钱的投入。</li>
     </ul>
     <p style="margin-top:1.4rem">2027 年 7 月可全职入职。想找的方向是：内容生产管线、AI 产品、需要一个人同时懂审美和实现的岗位。</p>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2>联系方式 <span class="en">Contact</span></h2>
+    <p>工作邀约、产品合作、或者只是想聊两句，都可以。</p>
+    <dl class="rows contact">
+      <div class="row">
+        <dt>邮箱</dt>
+        <dd>
+          <a class="mail" href="#" data-u="mercylago" data-h="gmail.com">mercylago [at] gmail.com</a>
+          <span class="hint">最可靠的通道</span>
+        </dd>
+      </div>
+      <div class="row">
+        <dt>GitHub</dt>
+        <dd>
+          <a href="https://github.com/sin0317" target="_blank" rel="noopener">github.com/sin0317</a>
+          <span class="hint">代码与开源物</span>
+        </dd>
+      </div>
+      <div class="row">
+        <dt>本站</dt>
+        <dd>
+          <a href="https://sin0317.github.io/liujunhao-portfolio/" target="_blank" rel="noopener">作品集</a>
+          <span class="hint">视频剪辑与 AIGC 的成品</span>
+        </dd>
+      </div>
+    </dl>
+
+    <div class="qr" id="qrblock">
+      <figure>
+        <img src="assets/wechat-qr.png" alt="微信二维码" id="qrimg">
+        <figcaption>微信</figcaption>
+      </figure>
+      <p class="qnote">扫码加我时，<strong>请说明来意</strong>。<br>没有备注的陌生好友申请，我通常不会通过——不是傲慢，是之前被广告号加怕了。</p>
+    </div>
   </section>
 
   <div class="signature reveal">
@@ -330,6 +391,25 @@
     });
   }, {rootMargin:'-30% 0px -55% 0px'});
   secs.forEach(function(s){ if(s) spy.observe(s); });
+
+  // 邮箱反爬：静态文本写成 mercylago [at] gmail.com，脚本可用时才拼回真地址
+  [].forEach.call(document.querySelectorAll('.mail'), function(a){
+    var u = a.getAttribute('data-u'), h = a.getAttribute('data-h');
+    if (!u || !h) return;
+    a.textContent = u + '@' + h;
+    a.href = 'mailto:' + u + '@' + h;
+  });
+
+  // 微信二维码：图片缺失时整块隐藏，不让线上出现裂图
+  var qr = document.getElementById('qrimg');
+  if (qr){
+    var hideQr = function(){
+      var b = document.getElementById('qrblock');
+      if (b) b.style.display = 'none';
+    };
+    if (qr.complete && qr.naturalWidth === 0) hideQr();
+    qr.addEventListener('error', hideQr);
+  }
 })();
 </script>
 </body>
